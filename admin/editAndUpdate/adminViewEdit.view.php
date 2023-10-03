@@ -1,23 +1,25 @@
 <?php
 session_start();
 require "partials/nav.php";
-require "Database.php";
+
+
 // Check if 'admin@gmail.com' is in the array
-if (in_array('admin@gmail.com', $_SESSION['user'])) {
+if (!in_array('admin@gmail.com', $_SESSION['user'])) {
     //dd($_SESSION['user']);
     header("Location: /");
     exit();
 }
+
+
 require "functions.php";
-$id=$_SESSION['id'];
-//dd($id);
+require "Database.php";
 require "config.php";
 $config = require("config.php");
 $db = new Database($config['database']);
 
 
 
-$employeeID = $id; // Replace with the specific Employee_ID you want to display
+$employeeID = $_GET['id'] ?? ''; // Replace with the specific Employee_ID you want to display
 
 // Retrieve employee details for the specific Employee_ID
 $empupdate = $db->query("SELECT * FROM employee WHERE Employee_ID = :id", [':id' => $employeeID]);
@@ -42,17 +44,10 @@ $familyDetails = $db->query($familyQuery, $familyParams)->get();
 
 ?>
 
-<?php
+<a href="/adminHome" class="text-blue-500 underline btn btn-outline-primary">Go Back...</a>
 
-    $userUpdateStatus=$_GET['updateStatus'] ?? '';
-    if ($userUpdateStatus==='success') {
-        echo '<p style="color: green;">Employee Updated successfully!</p>';
-    }elseif($userUpdateStatus==='error'){
-        echo '<p style="color: green;">Employee Creation Error!</p>';
-    }
-?>
 
-<form class="row g-3" action="userUpdate" method="post">
+<form class="row g-3" action="adminUserUpdate" method="post">
     <!-- Add a hidden input to store the editing state -->
     <input type="hidden" id="editing-state" name="editing" value="0">
 
@@ -90,12 +85,12 @@ $familyDetails = $db->query($familyQuery, $familyParams)->get();
         <div class="col-md-6">
             <label for="inputAddress" class="form-label">Role</label>
             <input type="text" name="role" class="form-control" value="<?= $emprow['Role'] ?>" placeholder="Enter Role"
-                required readonly>
+                required>
         </div>
         <div class="col-md-6">
             <label for="inputAddress" class="form-label">Salary</label>
             <input type="text" name="salary" class="form-control" value="<?= $emprow['Salary'] ?>"
-                placeholder="Enter Salary" required readonly>
+                placeholder="Enter Salary" required>
         </div>
     </div>
     <hr>
@@ -110,25 +105,25 @@ $familyDetails = $db->query($familyQuery, $familyParams)->get();
                 <div class="col-md-3">
                     <label for="inputAddress" class="form-label">Course</label>
                     <input type="text" name="education[<?= $index ?>][name]" class="form-control"
-                        value="<?= $educationDetail['Course'] ?>" placeholder="Enter Education"  required>
+                        value="<?= $educationDetail['Course'] ?>" placeholder="Enter Education" required>
                 </div>
                 <div class="col-md-3">
                     <label for="inputAddress" class="form-label">Institution</label>
                     <input type="text" name="education[<?= $index ?>][institution]" class="form-control"
-                        value="<?= $educationDetail['Institution'] ?>" placeholder="Enter Institute Name"  required>
+                        value="<?= $educationDetail['Institution'] ?>" placeholder="Enter Institute Name" required>
                 </div>
                 <div class="col-md-3">
                     <label for="inputAddress" class="form-label">CGPA</label>
                     <input type="text" name="education[<?= $index ?>][cgpa]" class="form-control"
-                        value="<?= $educationDetail['CGPA'] ?>" placeholder="Enter CGPA"  required>
+                        value="<?= $educationDetail['CGPA'] ?>" placeholder="Enter CGPA" required>
                 </div>
                 <div class="col-md-3">
                     <label for="inputAddress" class="form-label">Graduation Year</label>
                     <input type="text" name="education[<?= $index ?>][gradyear]" class="form-control"
-                        value="<?= $educationDetail['Graduation_Year'] ?>" placeholder="Enter Graduation Year"  required>
+                        value="<?= $educationDetail['Graduation_Year'] ?>" placeholder="Enter Graduation Year" required>
                 </div>
             </div>
-            <a href="/userDeleteRecord?educationid=<?= $educationDetail['education_id'] ?>"
+            <a href="/adminDeleteRecord?educationid=<?= $educationDetail['education_id'] ?>"
                 class="btn btn-danger remove-education-details">Delete</a>
             <!-- <button type="button" class="btn btn-sm btn-danger remove-education-details">Remove</button> -->
         </div>
@@ -148,21 +143,21 @@ $familyDetails = $db->query($familyQuery, $familyParams)->get();
                 <div class="col-md-4">
                     <label for="inputAddress" class="form-label">Name</label>
                     <input type="text" name="family[<?= $index ?>][name]" class="form-control"
-                        value="<?= $familyDetail['Name'] ?>" placeholder="Enter Name"  required>
+                        value="<?= $familyDetail['Name'] ?>" placeholder="Enter Name" required>
                 </div>
                 <div class="col-md-4">
                     <label for="inputAddress" class="form-label">Relationship</label>
                     <input type="text" name="family[<?= $index ?>][relationship]" class="form-control"
-                        value="<?= $familyDetail['Relationship'] ?>" placeholder="Enter Relationship"  required>
+                        value="<?= $familyDetail['Relationship'] ?>" placeholder="Enter Relationship" required>
                 </div>
                 <div class="col-md-4">
                     <label for="inputAddress" class="form-label">DOB</label>
                     <input type="text" name="family[<?= $index ?>][dob]" class="form-control"
-                        value="<?= $familyDetail['DOB'] ?>" placeholder="YYYY-MM-DD"  required>
+                        value="<?= $familyDetail['DOB'] ?>" placeholder="YYYY-MM-DD" required>
                 </div>
             </div>
             <div>
-                <a href="/userDeleteRecord?familyid=<?= $familyDetail['family_id'] ?>" class="btn btn-danger remove-family-details ">Delete</a>
+                <a href="/adminDeleteRecord?familyid=<?= $familyDetail['family_id'] ?>" class="btn btn-danger remove-family-details ">Delete</a>
             </div>
             <!-- <button type="button" class="btn btn-sm btn-danger remove-family-details ">Remove</button> -->
         </div>
@@ -184,7 +179,7 @@ $familyDetails = $db->query($familyQuery, $familyParams)->get();
                 <div class="col-md-4">
                     <label for="inputAddress" class="form-label">Company Name</label>
                     <input type="text" name="company[<?= $index ?>][name]" class="form-control"
-                        value="<?= $experienceDetail['Company'] ?>" placeholder="Enter Company Name"  required>
+                        value="<?= $experienceDetail['Company'] ?>" placeholder="Enter Company Name" required>
                 </div>
                 <div class="col-md-4">
                     <label for="inputAddress" class="form-label">Role</label>
@@ -197,7 +192,7 @@ $familyDetails = $db->query($familyQuery, $familyParams)->get();
                         value="<?= $experienceDetail['YearOfExperience'] ?>" placeholder="Enter Year Of Experience" required>
                 </div>
             </div>
-            <a href="/userDeleteRecord?experienceid=<?= $experienceDetail['experience_id'] ?>"
+            <a href="/adminDeleteRecord?experienceid=<?= $experienceDetail['experience_id'] ?>"
                 class="btn btn-danger remove-experience-details">Delete</a>
             <!-- <button type="button" class="btn btn-sm btn-danger remove-experience-details">Remove</button> -->
          

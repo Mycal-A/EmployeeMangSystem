@@ -1,5 +1,5 @@
 <?php
-
+require "Database.php";
 require "functions.php";
 require "Validator.php";
 $config = require("config.php");

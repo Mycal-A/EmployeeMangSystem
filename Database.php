@@ -49,4 +49,9 @@ class Database
     {
         return $this->connection->lastInsertId();
     }
+
+    public function getPDO() {
+        return $this->connection;
+    }
+    
 }

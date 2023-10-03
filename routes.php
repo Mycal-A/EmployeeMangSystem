@@ -17,4 +17,9 @@ return [
     '/logout' => 'session/logout.php',
     '/empHome' => 'session/employeeHome.php',
     '/access' => 'admin/accessControl.php',
+    '/adminDeleteRecord' => 'admin/editAndUpdate/adminDeleteRecord.php',
+    '/adminViewEdit' => 'admin/editAndUpdate/adminViewEdit.view.php',
+    '/adminUserUpdate' => 'admin/editAndUpdate/adminUserUpdate.php',
+    '/userUpdate' => 'session/userUpdate.php',
+    '/userDeleteRecord' => 'session/userDeleteRecord.php',
 ];  

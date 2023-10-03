@@ -1,5 +1,5 @@
 <?php
-
+require "Database.php";
 $id=$_GET['id'];
 $status=$_GET['status'];
 

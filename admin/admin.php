@@ -1,6 +1,8 @@
+<?php require "Database.php" ?>
+
 <?php
 session_start();
-if (!isset($_SESSION['user'])) {
+if (!isset($_SESSION['user'])==='admin@gmail.com') {
     header("Location: /");
     exit();
 }

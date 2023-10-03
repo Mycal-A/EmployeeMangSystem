@@ -86,122 +86,142 @@ $exprow =$exprow[0];
 
 <main>
   <br>
-<a href="/adminHome" class="text-blue-500 underline btn btn-outline-primary">Go Back...</a>
-    <H3 class="text-center">Employee Details</H1>
-<div class="container">
-<form class="row g-3" name="empupdate" method="post">
-  <div class="col-12">
-      <button type="button" id="editButton" class="btn btn-primary">Edit</button>
-      <button type="submit" class="btn btn-primary" style="display: none;">Save</button>
-      <div><?php if(isset($message)){echo $message;} ?></div>
-  </div>
-    <input type="hidden" name="id" value="<?= isset($emprow['Employee_ID']) ? $emprow['Employee_ID'] : '' ?>">
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Name</label>
-    <input type="text" name="name" class="form-control" id="inputEmail4" value="<?= $emprow['Name'] ? $emprow['Name'] : '' ?>">
-  </div>
-  <div class="col-md-6">
-    <label for="inputEmail4" class="form-label">Email</label>
-    <input type="email" name="email" class="form-control" id="inputEmail4" value="<?= $emprow['Email'] ? $emprow['Email'] : '' ?>">
-  </div>
-  <div class="col-md-6">
-    <label for="inputPassword4" class="form-label">Password</label>
-    <input type="password" name="password" class="form-control" id="inputPassword4" value="<?= $emprow['Password'] ? $emprow['Password'] : '' ?>">
-  </div>
-  <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Location</label>
-    <input type="text" name="location" class="form-control" id="inputAddress" placeholder="Address" value="<?= $emprow['Location'] ? $emprow['Location'] : '' ?>">
-  </div>
-  <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Role</label>
-    <input type="text" name="role" class="form-control" id="inputAddress" placeholder="Enter Role" value="<?= $emprow['Role'] ? $emprow['Role'] : '' ?>">
-  </div>
-  <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Salary</label>
-    <input type="text" name="salary" class="form-control" id="inputAddress" placeholder="Enter Salary" value="<?= $emprow['Salary'] ? $emprow['Salary'] : '' ?>">
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Save</button> <div><?php if(isset($message)){echo $message;} ?></div>
-  </div>
-</div>
-<hr>
+  <a href="/adminHome" class="text-blue-500 underline btn btn-outline-primary">Go Back...</a>
+  <form class="row g-3" name="empupdate" method="post">
+    <h class="text-center">Employee Details</h>
+    <div class="container">
+      <input type="hidden" name="id" value="<?= isset($emprow['Employee_ID']) ? $emprow['Employee_ID'] : '' ?>">
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Name</label>
+        <input type="text" name="name" class="form-control" id="inputEmail4"
+          value="<?= $emprow['Name'] ? $emprow['Name'] : '' ?>">
+      </div>
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input type="email" name="email" class="form-control" id="inputEmail4"
+          value="<?= $emprow['Email'] ? $emprow['Email'] : '' ?>">
+      </div>
+      <div class="col-md-6">
+        <label for="inputPassword4" class="form-label">Password</label>
+        <input type="password" name="password" class="form-control" id="inputPassword4"
+          value="<?= $emprow['Password'] ? $emprow['Password'] : '' ?>">
+      </div>
+      <div class="col-md-6">
+        <label for="inputAddress" class="form-label">Location</label>
+        <input type="text" name="location" class="form-control" id="inputAddress" placeholder="Address"
+          value="<?= $emprow['Location'] ? $emprow['Location'] : '' ?>">
+      </div>
+      <div class="col-md-6">
+        <label for="inputAddress" class="form-label">Role</label>
+        <input type="text" name="role" class="form-control" id="inputAddress" placeholder="Enter Role"
+          value="<?= $emprow['Role'] ? $emprow['Role'] : '' ?>">
+      </div>
+      <div class="col-md-6">
+        <label for="inputAddress" class="form-label">Salary</label>
+        <input type="text" name="salary" class="form-control" id="inputAddress" placeholder="Enter Salary"
+          value="<?= $emprow['Salary'] ? $emprow['Salary'] : '' ?>">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <div><?php if(isset($message)){echo $message;} ?></div>
+      </div>
+    </div>
+    <hr>
 
-<h3 class="text-center">Education</h3><br>
-<div class="container row g-3 mx-auto">
-    <div class="col-md-4">
-    <label for="inputAddress" class="form-label">Education 1</label>
-    <input type="text" name="Education_1" value="<?= $edurow['Education_1'] ? $edurow['Education_1'] : '' ?>" class="form-control" id="inputAddress" placeholder="Enter Education 1">
-  </div>
-  <div class="col-md-4">
-    <label for="inputAddress" class="form-label">College 1</label>
-    <input type="text" name="College_1" value="<?= $edurow['College_1'] ? $edurow['College_1'] : '' ?>" class="form-control" id="inputAddress" placeholder="Enter College Name">
-  </div>
-  <div class="col-md-4">
-    <label for="inputAddress" class="form-label">CGPA</label>
-    <input type="text" name="CGPA_1" value="<?= $edurow['CGPA_1'] ? $edurow['CGPA_1'] : '' ?>" class="form-control" id="inputAddress" placeholder="Enter CGPA">
-  </div>
-  <div class="col-md-4">
-    <label for="inputAddress" class="form-label">Education 2</label>
-    <input type="text" name="Education_2" value="<?= $edurow['Education_2'] ? $edurow['Education_2'] : '' ?>" class="form-control" id="inputAddress" placeholder="Enter Education 1">
-  </div>
-  <div class="col-md-4">
-    <label for="inputAddress" class="form-label">College 2</label>
-    <input type="text" name="College_2" value="<?= $edurow['College_2'] ? $edurow['College_2'] : '' ?>" class="form-control" id="inputAddress" placeholder="Enter College Name">
-  </div>
-  <div class="col-md-4">
-    <label for="inputAddress" class="form-label">CGPA</label>
-    <input type="text" name="CGPA_2" value="<?= $edurow['CGPA_2'] ? $edurow['CGPA_2'] : '' ?>" class="form-control" id="inputAddress" placeholder="Enter CGPA">
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Save</button> <div><?php if(isset($message)){echo $message;} ?></div>
-  </div>
-</div>
-<hr>
+    <h3 class="text-center">Education</h3><br>
+    <div class="container row g-3 mx-auto">
+      <div class="col-md-4">
+        <label for="inputAddress" class="form-label">Education 1</label>
+        <input type="text" name="Education_1" value="<?= $edurow['Education_1'] ? $edurow['Education_1'] : '' ?>"
+          class="form-control" id="inputAddress" placeholder="Enter Education 1">
+      </div>
+      <div class="col-md-4">
+        <label for="inputAddress" class="form-label">College 1</label>
+        <input type="text" name="College_1" value="<?= $edurow['College_1'] ? $edurow['College_1'] : '' ?>"
+          class="form-control" id="inputAddress" placeholder="Enter College Name">
+      </div>
+      <div class="col-md-4">
+        <label for="inputAddress" class="form-label">CGPA</label>
+        <input type="text" name="CGPA_1" value="<?= $edurow['CGPA_1'] ? $edurow['CGPA_1'] : '' ?>" class="form-control"
+          id="inputAddress" placeholder="Enter CGPA">
+      </div>
+      <div class="col-md-4">
+        <label for="inputAddress" class="form-label">Education 2</label>
+        <input type="text" name="Education_2" value="<?= $edurow['Education_2'] ? $edurow['Education_2'] : '' ?>"
+          class="form-control" id="inputAddress" placeholder="Enter Education 1">
+      </div>
+      <div class="col-md-4">
+        <label for="inputAddress" class="form-label">College 2</label>
+        <input type="text" name="College_2" value="<?= $edurow['College_2'] ? $edurow['College_2'] : '' ?>"
+          class="form-control" id="inputAddress" placeholder="Enter College Name">
+      </div>
+      <div class="col-md-4">
+        <label for="inputAddress" class="form-label">CGPA</label>
+        <input type="text" name="CGPA_2" value="<?= $edurow['CGPA_2'] ? $edurow['CGPA_2'] : '' ?>" class="form-control"
+          id="inputAddress" placeholder="Enter CGPA">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <div><?php if(isset($message)){echo $message;} ?></div>
+      </div>
+    </div>
+    <hr>
 
-<h3 class="text-center">Family Details</h3><br>
-<div class="container row g-3 mx-auto">
-    <div class="col-md-4">
-    <label for="inputAddress" class="form-label">Father Name</label>
-    <input type="text" name="Father_Name" value="<?= $famrow['Father_Name'] ? $famrow['Father_Name'] : '' ?>" class="form-control" id="inputAddress" placeholder="Enter Father Name">
-  </div>
-  <div class="col-md-4">
-    <label for="inputAddress" class="form-label">Mother Name</label>
-    <input type="text" name="Mother_Name" value="<?= $famrow['Mother_Name'] ? $famrow['Mother_Name'] : '' ?>" class="form-control" id="inputAddress" placeholder="Enter Mother Name">
-  </div>
-  <div class="col-md-4">
-    <label for="inputAddress" class="form-label">Siblings Names</label>
-    <input type="text" name="Siblings_Names" value="<?= $famrow['Siblings_Names'] ? $famrow['Siblings_Names'] : '' ?>" class="form-control" id="inputAddress" placeholder="Enter Siblings names">
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Save</button> <div><?php if(isset($message)){echo $message;} ?></div>
-  </div>
-</div>
+    <h3 class="text-center">Family Details</h3><br>
+    <div class="container row g-3 mx-auto">
+      <div class="col-md-4">
+        <label for="inputAddress" class="form-label">Father Name</label>
+        <input type="text" name="Father_Name" value="<?= $famrow['Father_Name'] ? $famrow['Father_Name'] : '' ?>"
+          class="form-control" id="inputAddress" placeholder="Enter Father Name">
+      </div>
+      <div class="col-md-4">
+        <label for="inputAddress" class="form-label">Mother Name</label>
+        <input type="text" name="Mother_Name" value="<?= $famrow['Mother_Name'] ? $famrow['Mother_Name'] : '' ?>"
+          class="form-control" id="inputAddress" placeholder="Enter Mother Name">
+      </div>
+      <div class="col-md-4">
+        <label for="inputAddress" class="form-label">Siblings Names</label>
+        <input type="text" name="Siblings_Names"
+          value="<?= $famrow['Siblings_Names'] ? $famrow['Siblings_Names'] : '' ?>" class="form-control"
+          id="inputAddress" placeholder="Enter Siblings names">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <div><?php if(isset($message)){echo $message;} ?></div>
+      </div>
+    </div>
 
-<hr>
-<h3 class="text-center">Experience</h3><br>
-<div class="container row g-3 mx-auto">
-    <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Company Name</label>
-    <input type="text" name="Company_1" value="<?= $exprow['Company_1'] ? $exprow['Company_1'] : '' ?>" class="form-control" id="inputAddress" placeholder="Enter Company Name">
-  </div>
-  <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Year OF Experience</label>
-    <input type="text" name="YearOfExperience_1" value="<?= $exprow['YearOfExperience_1'] ? $exprow['YearOfExperience_1'] : '' ?>" class="form-control" id="inputAddress" placeholder="Enter Year OF Experience">
-  </div>
-  <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Comapany 2</label>
-    <input type="text" name="Company_2" value="<?= $exprow['Company_2'] ? $exprow['Company_2'] : '' ?>" class="form-control" id="inputAddress" placeholder="Enter Comapany 2">
-  </div>
-  <div class="col-md-6">
-    <label for="inputAddress" class="form-label">Year Of Experience</label>
-    <input type="text" name="YearOfExperience_2" value="<?= $exprow['YearOfExperience_2'] ? $exprow['YearOfExperience_2'] : '' ?>" class="form-control" id="inputAddress" placeholder="Enter Year Of Experience">
-  </div>
-  <div class="col-12">
-    <button type="submit" class="btn btn-primary">Save</button> <div><?php if(isset($message)){echo $message;} ?></div>
-  </div>
+    <hr>
+    <h3 class="text-center">Experience</h3><br>
+    <div class="container row g-3 mx-auto">
+      <div class="col-md-6">
+        <label for="inputAddress" class="form-label">Company Name</label>
+        <input type="text" name="Company_1" value="<?= $exprow['Company_1'] ? $exprow['Company_1'] : '' ?>"
+          class="form-control" id="inputAddress" placeholder="Enter Company Name">
+      </div>
+      <div class="col-md-6">
+        <label for="inputAddress" class="form-label">Year OF Experience</label>
+        <input type="text" name="YearOfExperience_1"
+          value="<?= $exprow['YearOfExperience_1'] ? $exprow['YearOfExperience_1'] : '' ?>" class="form-control"
+          id="inputAddress" placeholder="Enter Year OF Experience">
+      </div>
+      <div class="col-md-6">
+        <label for="inputAddress" class="form-label">Comapany 2</label>
+        <input type="text" name="Company_2" value="<?= $exprow['Company_2'] ? $exprow['Company_2'] : '' ?>"
+          class="form-control" id="inputAddress" placeholder="Enter Comapany 2">
+      </div>
+      <div class="col-md-6">
+        <label for="inputAddress" class="form-label">Year Of Experience</label>
+        <input type="text" name="YearOfExperience_2"
+          value="<?= $exprow['YearOfExperience_2'] ? $exprow['YearOfExperience_2'] : '' ?>" class="form-control"
+          id="inputAddress" placeholder="Enter Year Of Experience">
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-primary">Save</button>
+        <div><?php if(isset($message)){echo $message;} ?></div>
+      </div>
 
-    </form>
-</div>
+  </form>
 </main>
 
 <?= require "partials/footer.php" ?>
