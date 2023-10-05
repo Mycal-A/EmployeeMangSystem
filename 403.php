@@ -1,6 +1,6 @@
 <?php
+session_start();
 
-require "partials/nav.php";
 
 ?>
 

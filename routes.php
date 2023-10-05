@@ -22,4 +22,5 @@ return [
     '/adminUserUpdate' => 'admin/editAndUpdate/adminUserUpdate.php',
     '/userUpdate' => 'session/userUpdate.php',
     '/userDeleteRecord' => 'session/userDeleteRecord.php',
+    '/403' => '403.php',
 ];  

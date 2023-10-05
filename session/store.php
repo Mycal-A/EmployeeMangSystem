@@ -40,10 +40,11 @@ $user = $db->query('select * from employee where Email = :email', [
 ])->find();
 
 // $name=$user['Name'];
-//dd($user['Access']);
+//dd($user);
 
 if ($user !== false) {
     if ($password === $user['Password']) {
+        
         if($user['Access']==1){
             
         //dd($user['Employee_ID']);
@@ -61,7 +62,7 @@ if ($user !== false) {
         exit();
 
         }else{
-            header('Location: 403.php');
+            header('Location: 403');
             exit();
         }
 

@@ -1,5 +1,6 @@
 <?php
 session_start();
+require "Database.php";
 require "functions.php";
 $config = require("config.php");
 $db = new Database($config['database']);

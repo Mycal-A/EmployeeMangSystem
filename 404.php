@@ -1,6 +1,5 @@
 <?php
-
-require "partials/nav.php";
+session_start();
 
 ?>
 
